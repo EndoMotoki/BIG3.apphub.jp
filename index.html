@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BIG3計算機</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/inter.css">
+</head>
+<body>
+    <div class="page-header" id="banner">
+        <div class="row my-4">
+          <div class="col-12">
+            <h1 class="text-primary">BIG3計算機</h1>
+            <p class="lead"></p>
+          </div>
+        </div>
+      </div>
+
+      <!--MAX計算公式(O'Conner式)
+        1RM = 重量 × (1 + 0.025 × 回数)
+      -->
+
+      <div class="Bench">
+        <h2>ベンチプレス</h2>
+        <input class="form-control form-control-lg" type="number" placeholder="重量を入力してください" id="bench_w">
+      </br>
+        <input class="form-control form-control-lg" type="number" placeholder="回数を入力してください" id="bench_r">
+        <button class="btn btn-primary" id="bench_calculate">計算</button>
+      </br>
+        <div class="form-group has-success">
+        </br>
+          <div class="col-lg-4">
+            <div class="bs-component">
+              <div class="alert alert-dismissible alert-info">
+                <strong>あなたのベンチプレスのMAX重量は</strong><input class="form-control" id="bench_MAX" type="text" disabled=""><strong>kgです！</strong>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <script>
+        var bench_calculate = document.getElementById("bench_calculate");
+        bench_calculate.addEventListener("click",function(a) {
+          a.preventDefault();
+          var bench_w = document.getElementById("bench_w").value;
+          var bench_r = document.getElementById("bench_r").value;
+          var a = 0.025 * parseInt(bench_r,10);
+          var b = a + 1;
+          var sum = parseInt(bench_w,10)*b;
+          //+ 1 * parseInt(bench_w,10);
+          //var sum = (1+(0.025*parseInt((bench_r),10))*parseInt((bench_w),10));
+          var bench_MAX = document.getElementById("bench_MAX");
+          bench_MAX.value = sum;
+        });
+      </script>
+
+      <div class="Squat">
+        <h2>スクワット</h2>
+        <input class="form-control form-control-lg" type="number" placeholder="重量を入力してください" id="sq_w">
+      </br>
+        <input class="form-control form-control-lg" type="number" placeholder="回数を入力してください" id="sq_r">
+        <button class="btn btn-primary" id="sq_calculate">計算</button>
+        <div class="form-group has-success">
+        </br>
+          <div class="col-lg-4">
+            <div class="bs-component">
+              <div class="alert alert-dismissible alert-info">
+                <strong>あなたのスクワットのMAX重量は</strong><input class="form-control" id="sq_MAX" type="text" disabled=""><strong>kgです！</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        var sq_calculate = document.getElementById("sq_calculate");
+        sq_calculate.addEventListener("click",function(b) {
+          b.preventDefault();
+          var sq_w = document.getElementById("sq_w").value;
+          var sq_r = document.getElementById("sq_r").value;
+          var a = 0.025 * parseInt(sq_r,10);
+          var b = a + 1;
+          var sum = parseInt(sq_w,10)*b;
+          var sq_MAX = document.getElementById("sq_MAX");
+          sq_MAX.value = sum;
+        });
+      </script>
+
+      <!--<div class="Dead">-->
+
+        <h2>デッドリフト</h2>
+      <div class="input-group mb-5">
+        <input class="form-control form-control-lg" type="number" placeholder="重量を入力してください" id="dead_w">
+        <span class="input-group-text" id="t1">kg</span>
+        </br>
+        <input class="form-control form-control-lg" type="number" placeholder="回数を入力してください" id="dead_r">
+        <span class="input-group-text" id="t2">kg</span>
+        <button class="btn btn-primary" id="dead_calculate">計算</button>
+    </br>
+        <div class="col-lg-4">
+          <div class="bs-component">
+            <div class="alert alert-dismissible alert-info">
+              <strong>あなたのデッドリフトのMAX重量は</strong><input class="form-control" id="dead_MAX" type="text" disabled=""><strong>kgです！</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        var dead_calculate = document.getElementById("dead_calculate");
+        dead_calculate.addEventListener("click",function(c) {
+          c.preventDefault();
+          var dead_w = document.getElementById("dead_w").value;
+          var dead_r = document.getElementById("dead_r").value;
+          var a = 0.025 * parseInt(dead_r,10);
+          var b = a + 1;
+          var sum = parseInt(dead_w,10)*b;
+          var dead_MAX = document.getElementById("dead_MAX");
+          dead_MAX.value = sum;
+        });
+      </script>
+
+    </br>
+  </br>
+
+      <div class="col-lg-4">
+        <div class="bs-component">
+          <div class="alert alert-dismissible alert-success">
+            <strong>GitHub:<a href="https://github.com/EndoMotoki/BIG3" target="_blank">https://github.com/EndoMotoki/BIG3</a> </strong>
+          </div>
+        </div>
+      </div>
+
+
+
+</body>
+</html>
