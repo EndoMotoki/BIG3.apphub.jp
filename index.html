@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>BIG3計算機</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/inter.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVDBWHBPBW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-EVDBWHBPBW');
+  </script>
 </head>
 <body>
     <div class="page-header" id="banner">
         <div class="row my-4">
           <div class="col-12">
-            <h1 class="text-primary">BIG3計算機</h1>
+            <h1 class="display-3">BIG3計算機</h1>
             <p class="lead"></p>
           </div>
         </div>
@@ -20,26 +29,34 @@
       <!--MAX計算公式(O'Conner式)
         1RM = 重量 × (1 + 0.025 × 回数)
       -->
+    <h3>使い方</h3>
+    <h4>BIG3の各フォームに挙げられる重量と回数を入力してください。</h4>
+    <h4>計算ボタンをタップするとすぐに推定MAX重量を算出します。</h4>
+    <h4>不具合の報告やご意見などは<a href="mailto:motoki@apphub.jp">motoki@apphub.jp</a>までお願いします</h4>
+    </br>
 
-      <div class="Bench">
-        <h2>ベンチプレス</h2>
+    <h2 class="display-4">ベンチプレス</h2>
+      <div class="input-group mb-5">
         <input class="form-control form-control-lg" type="number" placeholder="重量を入力してください" id="bench_w">
-      </br>
-        <input class="form-control form-control-lg" type="number" placeholder="回数を入力してください" id="bench_r">
-        <button class="btn btn-primary" id="bench_calculate">計算</button>
-      </br>
-        <div class="form-group has-success">
-        </br>
-          <div class="col-lg-4">
-            <div class="bs-component">
-              <div class="alert alert-dismissible alert-info">
-                <strong>あなたのベンチプレスのMAX重量は</strong><input class="form-control" id="bench_MAX" type="text" disabled=""><strong>kgです！</strong>
-              </div>
-            </div>
-          </div>
-
+        <div class="input-group-append">
+          <span class="input-group-text" id="b1">kg</span>
         </div>
       </div>
+      <div class="input-group mb-5">
+        <input class="form-control form-control-lg" type="number" placeholder="回数を入力してください" id="bench_r">
+        <div class="input-group-append">
+          <span class="input-group-text" id="b2">回</span>
+        </div>
+      </div>
+    <!--ボタンを中央に配置-->
+    <div class="col text-center">
+      <button class="btn btn-primary btn-lg btn-block" id="bench_calculate">計算</button> <!--ボタンを横いっぱいに配置-->
+    </div>
+</br>
+    <div>
+      <h3>推定MAX重量:<output name="result" id="bench_MAX"></output>  kg</h3>
+    </div>
+    </br>
 
       <script>
         var bench_calculate = document.getElementById("bench_calculate");
@@ -50,30 +67,35 @@
           var a = 0.025 * parseInt(bench_r,10);
           var b = a + 1;
           var sum = parseInt(bench_w,10)*b;
-          //+ 1 * parseInt(bench_w,10);
-          //var sum = (1+(0.025*parseInt((bench_r),10))*parseInt((bench_w),10));
           var bench_MAX = document.getElementById("bench_MAX");
-          bench_MAX.value = sum;
+          bench_MAX.value = Math.floor(sum);
         });
       </script>
 
-      <div class="Squat">
-        <h2>スクワット</h2>
+    <h2 class="display-4">スクワット</h2>
+      <div class="input-group mb-5">
         <input class="form-control form-control-lg" type="number" placeholder="重量を入力してください" id="sq_w">
-      </br>
-        <input class="form-control form-control-lg" type="number" placeholder="回数を入力してください" id="sq_r">
-        <button class="btn btn-primary" id="sq_calculate">計算</button>
-        <div class="form-group has-success">
-        </br>
-          <div class="col-lg-4">
-            <div class="bs-component">
-              <div class="alert alert-dismissible alert-info">
-                <strong>あなたのスクワットのMAX重量は</strong><input class="form-control" id="sq_MAX" type="text" disabled=""><strong>kgです！</strong>
-              </div>
-            </div>
-          </div>
+        <div class="input-group-append">
+          <span class="input-group-text" id="s1">kg</span>
         </div>
       </div>
+        <div class="input-group mb-5">
+        <input class="form-control form-control-lg" type="number" placeholder="回数を入力してください" id="sq_r">
+          <div class="input-group-append">
+            <span class="input-group-text" id="s2">回</span>
+          </div>
+      </div>
+
+    <!--ボタンを中央に配置-->
+    <div class="col text-center">
+      <button class="btn btn-primary btn-lg btn-block" id="sq_calculate">計算</button> <!--ボタンを横いっぱいに配置-->
+    </div>
+</br>
+    <div>
+      <h3>推定MAX重量:<output name="result" id="sq_MAX"></output>  kg</h3>
+    </div>
+
+    </br>
 
       <script>
         var sq_calculate = document.getElementById("sq_calculate");
@@ -81,25 +103,37 @@
           b.preventDefault();
           var sq_w = document.getElementById("sq_w").value;
           var sq_r = document.getElementById("sq_r").value;
-          var a = 0.025 * parseInt(sq_r,10);
-          var b = a + 1;
-          var sum = parseInt(sq_w,10)*b;
+          var sum = parseInt(sq_w,10)*parseInt(sq_r,10)/33.3+parseInt(sq_w,10);
           var sq_MAX = document.getElementById("sq_MAX");
-          sq_MAX.value = sum;
+          sq_MAX.value = Math.floor(sum);
         });
       </script>
 
       <!--<div class="Dead">-->
 
-        <h2>デッドリフト</h2>
+        <h2 class="display-4">デッドリフト</h2>
       <div class="input-group mb-5">
         <input class="form-control form-control-lg" type="number" placeholder="重量を入力してください" id="dead_w">
+        <div class="input-group-append">
         <span class="input-group-text" id="t1">kg</span>
-        </br>
+        </div>
+      </div>
+        <div class="input-group mb-5">
         <input class="form-control form-control-lg" type="number" placeholder="回数を入力してください" id="dead_r">
-        <span class="input-group-text" id="t2">kg</span>
-        <button class="btn btn-primary" id="dead_calculate">計算</button>
+          <div class="input-group-append">
+        <span class="input-group-text" id="t2">回</span>
+          </div>
+      </div>
+    <!--ボタンを中央に配置-->
+    <div class="col text-center">
+    <button class="btn btn-primary btn-lg btn-block" id="dead_calculate">計算</button> <!--ボタンを横いっぱいに配置-->
+    </div>
+
     </br>
+    <div>
+      <h3>推定MAX重量:<output name="result" id="dead_MAX"></output>  kg</h3>
+    </div>
+    <!--
         <div class="col-lg-4">
           <div class="bs-component">
             <div class="alert alert-dismissible alert-info">
@@ -107,7 +141,7 @@
             </div>
           </div>
         </div>
-      </div>
+        -->
 
       <script>
         var dead_calculate = document.getElementById("dead_calculate");
@@ -115,17 +149,16 @@
           c.preventDefault();
           var dead_w = document.getElementById("dead_w").value;
           var dead_r = document.getElementById("dead_r").value;
-          var a = 0.025 * parseInt(dead_r,10);
-          var b = a + 1;
-          var sum = parseInt(dead_w,10)*b;
+          var sum = parseInt(dead_w,10)*parseInt(dead_r,10)/33.3+parseInt(dead_w,10);
           var dead_MAX = document.getElementById("dead_MAX");
-          dead_MAX.value = sum;
+          dead_MAX.value = Math.floor(sum);
         });
       </script>
 
     </br>
   </br>
 
+<!--
       <div class="col-lg-4">
         <div class="bs-component">
           <div class="alert alert-dismissible alert-success">
@@ -133,6 +166,7 @@
           </div>
         </div>
       </div>
+      -->
 
 
 
