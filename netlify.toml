@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://big3.apphub.jp/*"
+  to = "https://big3.endomotoki.com/:splat"
+  status = 301
+  force = true
