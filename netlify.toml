@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "https://big3.apphub.jp/*"
-  to = "https://big3.endomotoki.com/:splat"
+  from = "https://big3.apphub.jp"
+  to = "https://big3.endomotoki.com"
   status = 301
   force = true
